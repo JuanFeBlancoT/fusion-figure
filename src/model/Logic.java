@@ -7,6 +7,9 @@ import processing.core.PApplet;
 
 public class Logic {
 
+	public final static String CIRCLE = "circulo";
+	public final static String SQUARE = "cuadrado";
+	
 	private int height, width;
 	private String[] linesInText;
 	private ArrayList<String> figureAtributes;
@@ -18,8 +21,27 @@ public class Logic {
 		figureAtributes = new ArrayList<>();
 		figures = new ArrayList<>();
 		generateFigureAttributes(app);
+		createInitialFigures();
 	}
 	
+	private void createInitialFigures() {
+		
+		for (int i = 0; i < figureAtributes.size(); i+=6) {
+			
+			int size = Integer.parseInt(figureAtributes.get(i+1));
+			int posX = Integer.parseInt(figureAtributes.get(i+2));
+			int posY = Integer.parseInt(figureAtributes.get(i+3));
+			int dir = Integer.parseInt(figureAtributes.get(i+4));
+			int value = Integer.parseInt(figureAtributes.get(i+5));
+			
+			if(figureAtributes.get(i).equalsIgnoreCase(CIRCLE)) {
+				createCircle(size, posX, posY, dir, value);
+			}else {
+				createSquare(size, posX, posY, dir, value);
+			}
+		}
+	}
+
 	public void generateFigureAttributes(PApplet app){
 		
 		linesInText = app.loadStrings("figuresInfo");
