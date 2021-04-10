@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import processing.core.PApplet;
 
@@ -84,7 +83,14 @@ public class Logic {
 		}
 	}
 
-	
+	public void verifyFreezeFigure(int mouseX, int mouseY, PApplet app) {
+		
+		for (int i = 0; i < figures.size(); i++) {
+			if(PApplet.dist(mouseX, mouseY, figures.get(i).getPosX(), figures.get(i).getPosY())<figures.get(i).getSize()) {
+				figures.get(i).setCanMove(!figures.get(i).isCanMove());
+			}
+		}
+	}
 	//Getters and setters
 
 	public ArrayList<Figure> getFigures() {

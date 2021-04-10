@@ -21,6 +21,7 @@ public class Main extends PApplet{
 	}
 
 	public void draw() {
+		rectMode(CENTER);
 		background(40);
 		mainController.draw(this);
 	}
@@ -28,10 +29,9 @@ public class Main extends PApplet{
 	public void mouseClicked() {
 		
 		if(mouseButton == LEFT) {
-			System.out.println("left");
 			mainController.getLogic().createRandomFigure();
 		}else {
-			System.out.println("right");
+			mainController.getLogic().verifyFreezeFigure(mouseX,mouseY, this);
 		}
 		
 	}

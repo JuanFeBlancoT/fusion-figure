@@ -19,14 +19,16 @@ public class Circle extends Figure{
 
 	@Override
 	public void move() {
-		posX+=2*dirX;
-		posY+=2*dirY;
-		
-		if(posX > maxX-(size/2) || posX < (size/2)) {
-			dirX*= -1;
-		}
-		if(posY > maxY-(size/2) || posY < (size/2)) {
-			dirY*= -1;
+		if(canMove) {
+			posX+=2*dirX;
+			posY+=2*dirY;
+			
+			if(posX > maxX-(size/2) || posX < (size/2)) {
+				dirX*= -1;
+			}
+			if(posY > maxY-(size/2) || posY < (size/2)) {
+				dirY*= -1;
+			}
 		}
 	}
 

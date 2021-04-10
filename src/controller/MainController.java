@@ -29,6 +29,4 @@ public class MainController {
 	public void setLogic(Logic logic) {
 		this.logic = logic;
 	}
-	
-	
 }
