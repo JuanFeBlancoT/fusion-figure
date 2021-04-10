@@ -4,8 +4,11 @@ import processing.core.PApplet;
 
 public class Circle extends Figure{
 
-	public Circle(int size, int posX, int posY, int dir, int value) {
-		super(size, posX, posY, dir, value);
+	private int dirX, dirY;
+	public Circle(int size, int posX, int posY, int dir, int value, int maxX, int maxY) {
+		super(size, posX, posY, dir, value, maxX, maxY);
+		dirX = dir;
+		dirY = -dir;
 	}
 
 	@Override
@@ -16,8 +19,15 @@ public class Circle extends Figure{
 
 	@Override
 	public void move() {
-		posX+=2*dir;
-		posY-=2*dir;
+		posX+=2*dirX;
+		posY+=2*dirY;
+		
+		if(posX > maxX-(size/2) || posX < (size/2)) {
+			dirX*= -1;
+		}
+		if(posY > maxY-(size/2) || posY < (size/2)) {
+			dirY*= -1;
+		}
 	}
 
 }

@@ -1,5 +1,11 @@
 package controller;
 
-public class MainController {
+import model.Logic;
+import processing.core.PApplet;
 
+public class MainController {
+	
+	
+	
+	
 }

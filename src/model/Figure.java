@@ -4,10 +4,10 @@ import processing.core.PApplet;
 
 public abstract class Figure {
 	
-	protected int size, posX, posY, dir, value, r,g,b;
+	protected int size, posX, posY, dir, value, r,g,b, maxX, maxY;
 	protected boolean canMove;
 	
-	public Figure(int size, int posX, int posY, int dir, int value) {
+	public Figure(int size, int posX, int posY, int dir, int value, int maxX, int maxY) {
 		
 		canMove = true;
 		this.size = size;
@@ -15,6 +15,8 @@ public abstract class Figure {
 		this.posY = posY;
 		this.dir = dir;
 		this.value = value;
+		this.maxX = maxX;
+		this.maxY = maxY;
 		r = (int) (Math.random()*255);
 		g = (int) (Math.random()*255);
 		b = (int) (Math.random()*255);
