@@ -1,6 +1,9 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import processing.core.PApplet;
 
 public class Logic {
 
@@ -9,11 +12,24 @@ public class Logic {
 	private ArrayList<String> figureAtributes;
 	private ArrayList<Figure> figures;
 	
-	public Logic(int h, int w) {
+	public Logic(int h, int w, PApplet app) {
 		width = w;
 		height = h;
 		figureAtributes = new ArrayList<>();
 		figures = new ArrayList<>();
+		generateFigureAttributes(app);
+	}
+	
+	public void generateFigureAttributes(PApplet app){
+		
+		linesInText = app.loadStrings("figuresInfo");
+		
+		for (int i = 0; i < linesInText.length; i++) {
+			String[] tempAtributes = linesInText[i].split(" ");
+			for (int j = 0; j < tempAtributes.length; j++) {
+				figureAtributes.add(tempAtributes[j]);
+			}
+		}
 	}
 	
 	public void createCircle(int size, int posX, int posY, int dir, int value) {

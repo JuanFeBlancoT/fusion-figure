@@ -8,10 +8,10 @@ public class MainController {
 	private int height, width;
 	private Logic logic;
 	
-	public MainController(int h, int w) {
+	public MainController(int h, int w, PApplet app) {
 		width = w;
 		height = h;
-		logic = new Logic(height, width);
+		logic = new Logic(height, width, app);
 	}
 	
 	public void draw(PApplet app) {

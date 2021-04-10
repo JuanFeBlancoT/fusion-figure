@@ -17,7 +17,7 @@ public class Main extends PApplet{
 	}
 	
 	public void setup() {
-		mainController = new MainController(height, width);
+		mainController = new MainController(height, width, this);
 	}
 
 	public void draw() {
