@@ -17,19 +17,19 @@ public class Main extends PApplet{
 	}
 	
 	public void setup() {
-		//mainController = new MainController(height, width);
+		mainController = new MainController(height, width);
 	}
 
 	public void draw() {
 		background(40);
-		//mainController.draw(this);
+		mainController.draw(this);
 	}
 	
 	public void mouseClicked() {
 		
 		if(mouseButton == LEFT) {
 			System.out.println("left");
-			//mainController.getLogic().createRandomFigure();
+			mainController.getLogic().createRandomFigure();
 		}else {
 			System.out.println("right");
 		}
