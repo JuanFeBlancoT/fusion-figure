@@ -20,6 +20,8 @@ public class MainController {
 			 logic.getFigures().get(i).draw(app);
 			 logic.getFigures().get(i).move();
 		}
+		logic.verifyCollition(app);
+		System.out.println(logic.getFigures().size());
 	}
 
 	public Logic getLogic() {

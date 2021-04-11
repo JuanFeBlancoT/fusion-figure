@@ -13,8 +13,10 @@ public class Circle extends Figure{
 
 	@Override
 	public void draw(PApplet app) {
-		
+		app.fill(r,g,b);
 		app.circle(posX, posY, size);
+		app.fill(255);
+		app.text(value, posX, posY);
 	}
 
 	@Override

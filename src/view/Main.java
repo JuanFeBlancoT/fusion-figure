@@ -21,6 +21,9 @@ public class Main extends PApplet{
 	}
 
 	public void draw() {
+		noStroke();
+		textSize(18);
+		textMode(CENTER);
 		rectMode(CENTER);
 		background(40);
 		mainController.draw(this);

@@ -63,8 +63,12 @@ public class Logic {
 		figures.add(square);
 	}
 	
-	public void createTriangle() {
+	public void createTriangle(int value, int posX, int posY) {
 		
+		int size = (int) (Math.random()*80+20);
+		int dir = 1;
+		Triangle triangle = new Triangle(size,posX,posY,dir,value,width,height);
+		figures.add(triangle);
 	}
 	
 	public void createRandomFigure() {
@@ -83,14 +87,36 @@ public class Logic {
 		}
 	}
 
+	@SuppressWarnings("static-access")
 	public void verifyFreezeFigure(int mouseX, int mouseY, PApplet app) {
 		
 		for (int i = 0; i < figures.size(); i++) {
-			if(PApplet.dist(mouseX, mouseY, figures.get(i).getPosX(), figures.get(i).getPosY())<figures.get(i).getSize()) {
+			if(app.dist(mouseX, mouseY, figures.get(i).getPosX(), figures.get(i).getPosY())<figures.get(i).getSize()) {
 				figures.get(i).setCanMove(!figures.get(i).isCanMove());
 			}
 		}
 	}
+	
+	@SuppressWarnings("static-access")
+	public void verifyCollition(PApplet app) {
+		for (int i = 0; i < figures.size(); i++) {
+			for (int j = 0; j < figures.size(); j++) {
+				
+				if(figures.get(i)!=figures.get(j) && (app.dist(figures.get(i).getPosX(), figures.get(i).getPosY(), figures.get(j).getPosX(), figures.get(j).getPosY())
+						<(figures.get(i).size/2+figures.get(j).getSize()/2))) {
+					
+					int sum = figures.get(i).getValue()+figures.get(j).getValue();
+					int posX = (figures.get(i).getPosX()+figures.get(j).getPosX())/2;
+					int posY = (figures.get(i).getPosY()+figures.get(j).getPosY())/2;
+					
+					createTriangle(sum, posX, posY);
+					figures.remove(i);
+					figures.remove(j-1);
+				}
+			}
+		}
+	}
+
 	//Getters and setters
 
 	public ArrayList<Figure> getFigures() {
